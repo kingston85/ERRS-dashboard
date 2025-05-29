@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#00ff88" />
+  
+  <!-- EPA Liberia ERRS Dashboard Meta Information -->
+  <meta name="description" content="Environmental Research & Radiation Safety Dashboard for EPA Liberia - Real-time monitoring of environmental parameters across Liberia" />
+  <meta name="keywords" content="EPA Liberia, environmental monitoring, radiation safety, air quality, water quality, environmental compliance, government dashboard" />
+  <meta name="author" content="EPA Liberia - ERRS Department" />
+  
+  <!-- Open Graph Meta Tags for Social Sharing -->
+  <meta property="og:title" content="EPA Liberia - ERRS Dashboard" />
+  <meta property="og:description" content="Real-time Environmental Research & Radiation Safety Monitoring System" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://errs.epa.gov.lr" />
+  <meta property="og:image" content="%PUBLIC_URL%/epa-liberia-preview.png" />
+  
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="EPA Liberia - ERRS Dashboard" />
+  <meta name="twitter:description" content="Real-time Environmental Monitoring for Liberia" />
+  <meta name="twitter:image" content="%PUBLIC_URL%/epa-liberia-preview.png" />
+  
+  <!-- Government and Security Meta Tags -->
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow" />
+  <meta name="rating" content="general" />
+  <meta name="classification" content="government" />
+  <meta name="geo.country" content="LR" />
+  <meta name="geo.region" content="Montserrado" />
+  <meta name="geo.placename" content="Monrovia" />
+  
+  <!-- Security Headers -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https: wss:;" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta http-equiv="X-Frame-Options" content="DENY" />
+  <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+  
+  <!-- Preconnect to External Resources -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://api.epa.gov.lr" />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  
+  <!-- Apple Touch Icons -->
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="%PUBLIC_URL%/apple-touch-icon.png" />
+  
+  <!-- Manifest for PWA -->
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://errs.epa.gov.lr" />
+  
+  <title>EPA Liberia - ERRS Dashboard | Environmental Monitoring System</title>
+  
+  <!-- Custom Styles for Loading Screen -->
+  <style>
+    /* Loading Screen Styles */
+    #loading-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      color: white;
+      font-family: 'Inter', sans-serif;
+    }
+    
+    .loading-logo {
+      font-size: 4rem;
+      margin-bottom: 2rem;
+      animation: pulse 2s infinite;
+    }
+    
+    .loading-title {
+      font-size: 2rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #00ff88 0%, #00d4ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    
+    .loading-subtitle {
+      font-size: 1.2rem;
+      color: #a0a0a0;
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+    
+    .loading-spinner {
+      width: 60px;
+      height: 60px;
+      border: 4px solid rgba(0, 255, 136, 0.3);
+      border-top: 4px solid #00ff88;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    
+    .loading-progress {
+      width: 300px;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 2px;
+      margin-top: 2rem;
+      overflow: hidden;
+    }
+    
+    .loading-progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, #00ff88 0%, #00d4ff 100%);
+      width: 0%;
+      animation: loading-progress 3s ease-in-out;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    @keyframes loading-progress {
+      0% { width: 0%; }
+      50% { width: 60%; }
+      100% { width: 100%; }
+    }
+    
+    /* Hide loading screen when React app loads */
+    #root:not(:empty) ~ #loading-screen {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- Skip Link for Accessibility -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  
+  <!-- Government Notice -->
+  <noscript>
+    <div style="background: #f44336; color: white; padding: 1rem; text-align: center; font-weight: bold;">
+      ⚠️ JavaScript is required to run the EPA Liberia ERRS Dashboard. Please enable JavaScript in your browser.
+    </div>
+  </noscript>
+  
+  <!-- React App Root -->
+  <div id="root" role="main" aria-label="EPA Liberia ERRS Dashboard Main Content"></div>
+  
+  <!-- Loading Screen (shown while React app loads) -->
+  <div id="loading-screen">
+    <div class="loading-logo">🏛️</div>
+    <h1 class="loading-title">EPA LIBERIA</h1>
+    <p class="loading-subtitle">Environmental Research & Radiation Safety</p>
+    <div class="loading-spinner"></div>
+    <div class="loading-progress">
+      <div class="loading-progress-bar"></div>
+    </div>
+    <p style="margin-top: 1rem; color: #a0a0a0; font-size: 0.9rem;">
+      Initializing Environmental Monitoring System...
+    </p>
+  </div>
+  
+  <!-- Government Footer Notice -->
+  <div id="gov-notice" style="display: none; position: fixed; bottom: 0; left: 0; right: 0; background: rgba(0, 0, 0, 0.9); color: white; padding: 0.5rem; text-align: center; font-size: 0.8rem; z-index: 1000;">
+    🏛️ Official Government Website - EPA Liberia | Environmental Protection Agency
+    <button onclick="document.getElementById('gov-notice').style.display='none'" style="margin-left: 1rem; background: none; border: 1px solid white; color: white; padding: 0.25rem 0.5rem; cursor: pointer;">×</button>
+  </div>
+  
+  <!-- Browser Compatibility Check -->
+  <script>
+    // Check for modern browser features
+    if (!window.fetch || !window.Promise || !Array.from) {
+      document.body.innerHTML = `
+        <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh; background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%); color: white; text-align: center; font-family: Arial, sans-serif;">
+          <h1 style="color: #f44336; margin-bottom: 2rem;">⚠️ Browser Not Supported</h1>
+          <p style="margin-bottom: 1rem; font-size: 1.2rem;">The EPA Liberia ERRS Dashboard requires a modern browser.</p>
+          <p style="margin-bottom: 2rem; color: #a0a0a0;">Please update your browser or use:</p>
+          <ul style="list-style: none; padding: 0;">
+            <li style="margin: 0.5rem 0;">🌐 Chrome 70+</li>
+            <li style="margin: 0.5rem 0;">🦊 Firefox 65+</li>
+            <li style="margin: 0.5rem 0;">🧭 Safari 12+</li>
+            <li style="margin: 0.5rem 0;">📘 Edge 79+</li>
+          </ul>
+        </div>
+      `;
+    } else {
+      // Show government notice after 5 seconds
+      setTimeout(() => {
+        document.getElementById('gov-notice').style.display = 'block';
+      }, 5000);
+    }
+  </script>
+  
+  <!-- Analytics and Monitoring (only in production) -->
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=%REACT_APP_GA_MEASUREMENT_ID%"></script>
+  <script>
+    if (typeof gtag !== 'undefined' && '%REACT_APP_ENVIRONMENT%' === 'production') {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', '%REACT_APP_GA_MEASUREMENT_ID%', {
+        page_title: 'EPA Liberia ERRS Dashboard',
+        custom_map: {'custom_parameter_1': 'government_dashboard'}
+      });
+    }
+  </script>
+  
+  <!-- Service Worker Registration -->
+  <script>
+    if ('serviceWorker' in navigator && '%REACT_APP_ENVIRONMENT%' === 'production') {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/sw.js')
+          .then(function(registration) {
+            console.log('✅ SW registered: ', registration);
+          }, function(registrationError) {
+            console.log('❌ SW registration failed: ', registrationError);
+          });
+      });
+    }
+  </script>
+</body>
+</html>
