@@ -1,0 +1,106 @@
+{
+  "short_name": "EPA ERRS",
+  "name": "EPA Liberia - Environmental Research & Radiation Safety Dashboard",
+  "description": "Real-time environmental monitoring and radiation safety dashboard for the Environmental Protection Agency of Liberia",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "logo192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "maskable"
+    },
+    {
+      "src": "logo512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any"
+    },
+    {
+      "src": "apple-touch-icon.png",
+      "type": "image/png",
+      "sizes": "180x180",
+      "purpose": "apple touch icon"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#00ff88",
+  "background_color": "#0f2027",
+  "orientation": "any",
+  "scope": "/",
+  "lang": "en-US",
+  "dir": "ltr",
+  "categories": [
+    "government",
+    "utilities",
+    "productivity",
+    "education"
+  ],
+  "screenshots": [
+    {
+      "src": "screenshot-desktop.png",
+      "type": "image/png",
+      "sizes": "1280x720",
+      "form_factor": "wide",
+      "label": "EPA ERRS Dashboard - Desktop View"
+    },
+    {
+      "src": "screenshot-mobile.png",
+      "type": "image/png", 
+      "sizes": "375x812",
+      "form_factor": "narrow",
+      "label": "EPA ERRS Dashboard - Mobile View"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Dashboard",
+      "short_name": "Dashboard",
+      "description": "View environmental overview dashboard",
+      "url": "/dashboard",
+      "icons": [{ "src": "icon-dashboard.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Real-time Monitoring",
+      "short_name": "Monitoring", 
+      "description": "Access real-time environmental data",
+      "url": "/monitoring",
+      "icons": [{ "src": "icon-monitoring.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Incidents",
+      "short_name": "Alerts",
+      "description": "View environmental alerts and incidents",
+      "url": "/incidents", 
+      "icons": [{ "src": "icon-alerts.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Reports",
+      "short_name": "Reports",
+      "description": "Generate environmental reports",
+      "url": "/reports",
+      "icons": [{ "src": "icon-reports.png", "sizes": "96x96" }]
+    }
+  ],
+  "related_applications": [
+    {
+      "platform": "web",
+      "url": "https://epa.gov.lr",
+      "id": "lr.gov.epa"
+    }
+  ],
+  "prefer_related_applications": false,
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  },
+  "handle_links": "preferred",
+  "capture_links": "existing-client-navigate"
+}
